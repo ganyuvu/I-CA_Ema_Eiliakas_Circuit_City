@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class OpenGate : MonoBehaviour
+public class OpenANDGate : MonoBehaviour
 {
     [SerializeField] private ANDGateManager gateManager;//Reference to the ANDGateManager
     [SerializeField] private Transform gate;//The gate GameObject to move
