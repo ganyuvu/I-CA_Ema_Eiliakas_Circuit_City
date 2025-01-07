@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class CheckCollision : MonoBehaviour
 {
-    public bool isColliding; // Bool to check if something is colliding
+    public bool isColliding; //Bool to check if something is colliding
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the object that collided is the player or a box
+        //Check if the object that collided is the player or a box
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
         {
             isColliding = true;
@@ -16,7 +16,7 @@ public class CheckCollision : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        // When the object stops colliding
+        //When the object stops colliding
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
         {
             isColliding = false;
