@@ -2,13 +2,13 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "PointAndClick",
-            "id": "fb8423f1-1962-49b4-a7b8-956ac0fe7836",
+            "name": "Main",
+            "id": "c394dd90-9105-4c16-8df7-0003b50f2ea0",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "Move",
                     "type": "Button",
-                    "id": "48146f2d-078f-4282-8d57-326c077c7c5e",
+                    "id": "2316fb51-b9b4-4394-8caa-da4a4941ba50",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -18,12 +18,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "71ca8233-62e1-45bb-a83e-f74b02e3acf8",
+                    "id": "4339d9a2-8aa6-40df-8e71-87ca93439016",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
