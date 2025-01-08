@@ -17,8 +17,8 @@ public class NANDGateManager : MonoBehaviour
 
     void Update()
     {
-        //Perform AND logic check
-        //Both pressure plates must be pressed to activate the gate
+        //Perform NAND logic check
+        //Both pressure plates must not be pressed to activate the gate
         bool isGateActivated = !pressurePlate1.isColliding && !pressurePlate2.isColliding;
 
         //Pass the status to OpenGate script
