@@ -19,9 +19,9 @@ TagManager:
   - Obj
   - interactable
   - Gate
-  - 
-  - 
-  - 
+  - ANDPlate
+  - ORPlate
+  - NANDPlate
   - 
   - 
   - 
