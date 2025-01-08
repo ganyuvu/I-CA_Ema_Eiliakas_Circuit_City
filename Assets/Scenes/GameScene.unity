@@ -956,6 +956,11 @@ Transform:
   - {fileID: 1765883484}
   m_Father: {fileID: 1306431375}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &521386081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2329279538996932091, guid: a58444cdb7aff834b81db90a72088617, type: 3}
+  m_PrefabInstance: {fileID: 1314127961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &546096773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1194,10 @@ PrefabInstance:
     - target: {fileID: 4972594143755034377, guid: e332c2b3146d230458a0736bb2242ac7, type: 3}
       propertyPath: m_Name
       value: PressurePlate2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931490585725955180, guid: e332c2b3146d230458a0736bb2242ac7, type: 3}
+      propertyPath: m_Size.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7667923938134194883, guid: e332c2b3146d230458a0736bb2242ac7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1837,6 +1846,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2101759996165444991, guid: a58444cdb7aff834b81db90a72088617, type: 3}
+      propertyPath: objectPickupScript
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2113900792848431697, guid: a58444cdb7aff834b81db90a72088617, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -2140,13 +2153,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2329279538996932091, guid: a58444cdb7aff834b81db90a72088617, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1314127971}
   m_SourcePrefab: {fileID: 100100000, guid: a58444cdb7aff834b81db90a72088617, type: 3}
 --- !u!4 &1314127962 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2237656132713241722, guid: a58444cdb7aff834b81db90a72088617, type: 3}
   m_PrefabInstance: {fileID: 1314127961}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1314127971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521386081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6459b370a8986184bad3574432aced79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  raycastOffset: {x: 0, y: 0.4, z: 0.5}
 --- !u!1 &1342263235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,7 +2785,7 @@ GameObject:
   - component: {fileID: 1765883487}
   - component: {fileID: 1765883486}
   - component: {fileID: 1765883485}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3445,6 +3478,10 @@ PrefabInstance:
     - target: {fileID: 1501481926939237959, guid: 5d56e63086fa6ae4681341b5336ef9a7, type: 3}
       propertyPath: m_Name
       value: Crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501481926939237959, guid: 5d56e63086fa6ae4681341b5336ef9a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8798501150338054068, guid: 5d56e63086fa6ae4681341b5336ef9a7, type: 3}
       propertyPath: m_LocalPosition.x

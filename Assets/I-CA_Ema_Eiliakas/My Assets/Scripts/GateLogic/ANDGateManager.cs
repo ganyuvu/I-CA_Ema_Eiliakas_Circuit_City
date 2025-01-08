@@ -36,7 +36,7 @@ public class ANDGateManager : MonoBehaviour
             {
                 hasPlayedSound = false; // Reset sound flag when the gate is closed
             }
-            Debug.Log("Logic Gate is Closed");
+            //Debug.Log("Logic Gate is Closed");
         }
     }
 

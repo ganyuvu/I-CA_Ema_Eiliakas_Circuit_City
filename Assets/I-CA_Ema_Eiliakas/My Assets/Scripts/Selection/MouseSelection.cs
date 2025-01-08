@@ -11,7 +11,7 @@ namespace GD.Selection
             //Perform raycast to detect objects under the mouse
             if (Physics.Raycast(ray, out hitInfo))
             {
-                Debug.Log("Hit: " + hitInfo.transform.name);
+                //Debug.Log("Hit: " + hitInfo.transform.name);
             }
         }
 

@@ -35,6 +35,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PickUpOrDrop"",
+                    ""type"": ""Button"",
+                    ""id"": ""d9f78af3-f9f6-4db6-a5de-9a091af384e0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""862e283e-f1b2-4782-9fad-94975585c768"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PickUpOrDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Main
         m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
         m_Main_Move = m_Main.FindAction("Move", throwIfNotFound: true);
+        m_Main_PickUpOrDrop = m_Main.FindAction("PickUpOrDrop", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -124,11 +145,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Main;
     private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
     private readonly InputAction m_Main_Move;
+    private readonly InputAction m_Main_PickUpOrDrop;
     public struct MainActions
     {
         private @PlayerControls m_Wrapper;
         public MainActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Main_Move;
+        public InputAction @PickUpOrDrop => m_Wrapper.m_Main_PickUpOrDrop;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -141,6 +164,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @PickUpOrDrop.started += instance.OnPickUpOrDrop;
+            @PickUpOrDrop.performed += instance.OnPickUpOrDrop;
+            @PickUpOrDrop.canceled += instance.OnPickUpOrDrop;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -148,6 +174,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @PickUpOrDrop.started -= instance.OnPickUpOrDrop;
+            @PickUpOrDrop.performed -= instance.OnPickUpOrDrop;
+            @PickUpOrDrop.canceled -= instance.OnPickUpOrDrop;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -168,5 +197,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IMainActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnPickUpOrDrop(InputAction.CallbackContext context);
     }
 }

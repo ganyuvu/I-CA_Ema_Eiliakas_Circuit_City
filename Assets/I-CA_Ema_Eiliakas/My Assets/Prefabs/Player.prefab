@@ -53,6 +53,7 @@ MonoBehaviour:
   clickableLayers:
     serializedVersion: 2
     m_Bits: 1
+  objectPickupScript: {fileID: 0}
 --- !u!195 &5147232981629573819
 NavMeshAgent:
   m_ObjectHideFlags: 0
