@@ -62,18 +62,28 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = (agent.destination - transform.position).normalized;
 
         //Calculate the desired look rotation, but focus only on the Y-axis
-        if (direction.sqrMagnitude > 0.01f) //Ensure direction is significant enough to avoid jitter
+        //Now the rotation only happens when the player is moving
+        if (agent.velocity.sqrMagnitude > 0.01f) //Ensure direction is significant enough to avoid jitter
         {
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * lookRotationSpeed);
+        }
+        else
+        {
+            //Ensures Player Rotation doesn't happen if not moving
+            transform.rotation = transform.rotation;
         }
 	}
 
     void SetAnimations()
     {
-        if(agent.velocity == Vector3.zero)
-        { animator.Play(IDLE); }
+        if (agent.velocity.sqrMagnitude == 0)
+        {
+            animator.Play(IDLE);
+        }
         else
-        { animator.Play(WALK); }
+        {
+            animator.Play(WALK);
+        }
     }
 }
