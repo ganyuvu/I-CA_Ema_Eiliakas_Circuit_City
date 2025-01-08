@@ -6,6 +6,14 @@ public class ANDGateManager : MonoBehaviour
     [SerializeField] private CheckCollision pressurePlate2;//Reference to CheckCollision script of pressure plate 2
 
     public bool GateActivated = false;//Bool to check if the gate has been activated
+    private bool hasPlayedSound = false;//Bool to check if the SFX has been played
+
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Update()
     {
@@ -14,12 +22,27 @@ public class ANDGateManager : MonoBehaviour
         if (pressurePlate1.isColliding && pressurePlate2.isColliding)
         {
             GateActivated = true;
+            if(GateActivated == true && !hasPlayedSound)
+            {
+                PlayOpenGateSFX();
+                hasPlayedSound = true;
+            }
             Debug.Log("Both pressure plates are pressed. Logic Gate Open!");
         }
         else
         {
             GateActivated = false;
+            if (hasPlayedSound)
+            {
+                hasPlayedSound = false; // Reset sound flag when the gate is closed
+            }
             Debug.Log("Logic Gate is Closed");
         }
+    }
+
+    //Method to play SFX
+    private void PlayOpenGateSFX()
+    {
+        audioManager.PlaySFX(audioManager.gateOpen);
     }
 }
