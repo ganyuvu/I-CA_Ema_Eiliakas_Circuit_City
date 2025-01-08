@@ -8,6 +8,10 @@ namespace GD.Selection
         [SerializeField] private Color hoverColor = Color.red;//Color to change to when hovering (red by default)
         [SerializeField] private LayerMask interactableLayers;//Layer mask to specify which layers can be hovered
 
+        [SerializeField] private Color andPlateColor = Color.red; // Color for ANDPlate layer
+        [SerializeField] private Color orPlateColor = Color.green; // Color for ORPlate layer
+        [SerializeField] private Color nandPlateColor = Color.blue; // Color for NANDPlate layer
+
         [SerializeField] private MouseRay mouseRay; // Reference to the MouseRay script
 
         private Transform currentHoveredObject;//Track the currently hovered object
@@ -46,26 +50,42 @@ namespace GD.Selection
             }
         }
 
-        private void HandleObjectHover(Transform obj)
+private void HandleObjectHover(Transform obj)
+{
+    // Only change the color if it's a new hovered object
+    if (currentHoveredObject != obj)
+    {
+        // Reset previous object's color if any
+        if (currentHoveredObject != null)
+            ResetObjectColor();
+
+        // Store the new hovered object and change its color
+        currentHoveredObject = obj;
+        objectRenderer = obj.GetComponent<Renderer>();
+
+        if (objectRenderer != null)
         {
-            //Only change the color if it's a new hovered object
-            if (currentHoveredObject != obj)
+            // Check layer and apply respective color using if statements
+            if (obj.gameObject.layer == LayerMask.NameToLayer("ANDPlate"))
             {
-                //Reset previous object's color if any
-                if (currentHoveredObject != null)
-                    ResetObjectColor();
-
-                //Store the new hovered object and change its color
-                currentHoveredObject = obj;
-                objectRenderer = obj.GetComponent<Renderer>();
-
-                if (objectRenderer != null)
-                {
-                    originalColor = objectRenderer.material.color; //Store the original color
-                    objectRenderer.material.color = hoverColor; //Change to hover color
-                }
+                objectRenderer.material.color = andPlateColor;
+            }
+            else if (obj.gameObject.layer == LayerMask.NameToLayer("ORPlate"))
+            {
+                objectRenderer.material.color = orPlateColor;
+            }
+            else if (obj.gameObject.layer == LayerMask.NameToLayer("NANDPlate"))
+            {
+                objectRenderer.material.color = nandPlateColor;
+            }
+            else
+            {
+                objectRenderer.material.color = Color.white; // Default color if layer is not recognized
             }
         }
+    }
+}
+
 
         private void ResetObjectColor()
         {

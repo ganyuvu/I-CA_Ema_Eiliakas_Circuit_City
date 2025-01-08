@@ -3629,7 +3629,10 @@ MonoBehaviour:
   hoverColor: {r: 1, g: 1, b: 1, a: 0.003921569}
   interactableLayers:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 28672
+  andPlateColor: {r: 1, g: 0.4575472, b: 0.4575472, a: 0.19607843}
+  orPlateColor: {r: 0.495283, g: 1, b: 0.495283, a: 0.19607843}
+  nandPlateColor: {r: 0.5330188, g: 0.5330188, b: 1, a: 0.19215687}
   mouseRay: {fileID: 1972920458}
 --- !u!1001 &1972961889
 PrefabInstance:
