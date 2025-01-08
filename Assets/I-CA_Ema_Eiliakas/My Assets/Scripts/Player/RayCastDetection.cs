@@ -34,7 +34,7 @@ public class RayCastDetection : MonoBehaviour
             currentObject = hit.collider.gameObject;
 
             //Log the name of the object
-            Debug.Log("Object detected: " + currentObject.name);
+            //Debug.Log("Object detected: " + currentObject.name);
 
             //Draw a debug line in the scene view
             Debug.DrawLine(transform.position + raycastOffset, hit.point, Color.green);
@@ -46,7 +46,7 @@ public class RayCastDetection : MonoBehaviour
             currentObject = null;
 
             //Log that no object was detected
-            Debug.Log("No object detected in front.");
+            //Debug.Log("No object detected in front.");
         }
     }
 
