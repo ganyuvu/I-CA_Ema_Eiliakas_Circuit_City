@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class ObjectPickup : MonoBehaviour
 {
     [SerializeField] private RayCastDetection rayCastDetection;//Reference to the RayCastDetection script
+    [SerializeField] private Transform holdPosition;
     private PlayerControls input;//The input system controls class
     private InputAction pickupAction;//The pickup input action
 
@@ -45,6 +46,13 @@ public class ObjectPickup : MonoBehaviour
                 PerformPickup();
             }
         }
+
+        //If holding an object, ensure it follows the hold position
+        if (isHoldingObject && heldObject != null)
+        {
+            heldObject.transform.position = holdPosition.position;
+            heldObject.transform.rotation = holdPosition.rotation;
+        }
     }
 
     //Method to perform the pickup action
@@ -55,6 +63,17 @@ public class ObjectPickup : MonoBehaviour
             heldObject = rayCastDetection.currentObject;
             isHoldingObject = true;
 
+            //Attach the object to the player at the hold position
+            heldObject.transform.SetParent(holdPosition);
+            heldObject.transform.localPosition = Vector3.zero;
+            heldObject.transform.localRotation = Quaternion.identity;
+
+            Rigidbody objectRigidbody = heldObject.GetComponent<Rigidbody>();
+            if (objectRigidbody != null)
+            {
+                objectRigidbody.isKinematic = true;
+            }
+
             //Log the pickup action
             Debug.Log("Picked up object: " + heldObject.name);
         }
@@ -63,6 +82,16 @@ public class ObjectPickup : MonoBehaviour
     //Method to perform the drop action
     void PerformDrop()
     {
+        //Detach the object from the player
+        heldObject.transform.SetParent(null);
+
+        //Re-enable the object's movement by enabling its Rigidbody component
+        Rigidbody objectRigidbody = heldObject.GetComponent<Rigidbody>();
+        if (objectRigidbody != null)
+        {
+            objectRigidbody.isKinematic = false;
+        }
+
         //Log the drop action
         Debug.Log("Dropped object: " + heldObject.name);
 

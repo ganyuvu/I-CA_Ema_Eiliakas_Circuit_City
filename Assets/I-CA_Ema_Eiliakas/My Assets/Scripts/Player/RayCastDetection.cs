@@ -2,58 +2,48 @@ using UnityEngine;
 
 public class RayCastDetection : MonoBehaviour
 {
-    //The maximum distance the ray will detect objects
-    [SerializeField] private float detectionRange = 5f;
+    //The maximum distance the sphere will detect objects
+    [SerializeField] private float detectionRange = 2f;
 
-    //LayerMask to filter what the ray can hit (optional)
+    //LayerMask to filter what the sphere can hit
     [SerializeField] private LayerMask layerMask;
 
     //Bool to check if the player is facing an object
     public bool isFacingObject { get; private set; }
     public GameObject currentObject { get; private set; }
 
-    //Offset to modify the starting point of the ray
+    //Offset to modify the starting point of the sphere
     [SerializeField] private Vector3 raycastOffset = new Vector3(0f, 0f, 0.5f);
 
     void Update()
     {
-        CheckForObjectWithRaycast();
+        CheckForObjectWithSphere();
     }
 
-    //Method to check for objects in front of the player using Raycast
-    void CheckForObjectWithRaycast()
+    //Method to check for objects in front of the player using OverlapSphere
+    void CheckForObjectWithSphere()
     {
-        //Cast a ray from the player's position with the specified offset
-        RaycastHit hit;
+        //Cast a sphere from the player's position with the specified offset and player's forward rotation
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position + transform.TransformDirection(raycastOffset), detectionRange, layerMask);
 
-        //Cast the ray and check if it hits anything
-        if (Physics.Raycast(transform.position + raycastOffset, transform.forward, out hit, detectionRange, layerMask))
+        if (hitColliders.Length > 0)
         {
-            //Object detected
             isFacingObject = true;
-            currentObject = hit.collider.gameObject;
-
-            //Log the name of the object
-            //Debug.Log("Object detected: " + currentObject.name);
-
-            //Draw a debug line in the scene view
-            Debug.DrawLine(transform.position + raycastOffset, hit.point, Color.green);
+            //Use the first object detected as to not detect multiple
+            currentObject = hitColliders[0].gameObject;
         }
         else
         {
-            //No object detected
             isFacingObject = false;
             currentObject = null;
-
-            //Log that no object was detected
-            //Debug.Log("No object detected in front.");
         }
     }
 
-    //Draw the ray
+    //Draw the sphere in the scene view
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position + raycastOffset, transform.position + raycastOffset + transform.forward * detectionRange);
+        //Draw the sphere with the transformed offset to reflect the player's rotation
+        Gizmos.DrawWireSphere(transform.position + transform.TransformDirection(raycastOffset), detectionRange);
     }
 }
