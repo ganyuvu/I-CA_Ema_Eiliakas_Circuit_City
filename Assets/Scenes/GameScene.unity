@@ -732,7 +732,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 9.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1314127962}
   smoothSpeed: 2
-  offset: {x: 0, y: 10, z: 0}
+  offset: {x: 0, y: 9.5, z: 0}
 --- !u!1 &350452698
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressurePlate1: {fileID: 442361810}
   pressurePlate2: {fileID: 398629584}
-  GateActivated: 0
+  gateController: {fileID: 369710888}
 --- !u!1 &369710883
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +858,7 @@ GameObject:
   - component: {fileID: 369710887}
   - component: {fileID: 369710886}
   - component: {fileID: 369710885}
+  - component: {fileID: 369710888}
   m_Layer: 0
   m_Name: Gate2
   m_TagString: Untagged
@@ -954,6 +955,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369710883}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &369710888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369710883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45fadb8dad7fbed4b96b06ac25df9d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GateActivated: 0
+  gate: {fileID: 369710884}
+  targetYPosition: 15
+  speed: 2
 --- !u!1 &370029736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,8 +2043,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306431375}
-  - component: {fileID: 1306431376}
-  - component: {fileID: 1306431377}
   m_Layer: 0
   m_Name: Room1
   m_TagString: Untagged
@@ -2055,38 +2070,6 @@ Transform:
   - {fileID: 1564688680}
   m_Father: {fileID: 1508366154}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1306431376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306431374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 843952b7602c0c048b9b4c6d08b90d13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gateManager: {fileID: 1915204500}
-  gate: {fileID: 1680741169}
-  targetYPosition: 15
-  speed: 1.5
---- !u!114 &1306431377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306431374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5762bfb5274f8b54da8ca2f66e99ca84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gateManager: {fileID: 350452700}
-  gate: {fileID: 369710884}
-  targetYPosition: 15
-  speed: 1.5
 --- !u!1001 &1314127961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3002,6 +2985,7 @@ GameObject:
   - component: {fileID: 1680741172}
   - component: {fileID: 1680741171}
   - component: {fileID: 1680741170}
+  - component: {fileID: 1680741173}
   m_Layer: 0
   m_Name: Gate1
   m_TagString: Untagged
@@ -3098,6 +3082,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680741168}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1680741173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680741168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45fadb8dad7fbed4b96b06ac25df9d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GateActivated: 0
+  gate: {fileID: 1680741169}
+  targetYPosition: 15
+  speed: 2
 --- !u!1 &1765883483
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,7 +3371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressurePlate1: {fileID: 1117744401}
   pressurePlate2: {fileID: 630776408}
-  GateActivated: 0
+  gateController: {fileID: 1680741173}
 --- !u!1 &1972920454
 GameObject:
   m_ObjectHideFlags: 0

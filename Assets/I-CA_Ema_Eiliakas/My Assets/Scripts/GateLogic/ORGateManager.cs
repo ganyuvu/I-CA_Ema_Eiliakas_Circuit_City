@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class ORGateManager : MonoBehaviour
 {
-    [SerializeField] private CheckCollision pressurePlate1;
-    [SerializeField] private CheckCollision pressurePlate2;
+    [SerializeField] private CheckCollision pressurePlate1;//Reference to CheckCollision script of pressure plate 1
+    [SerializeField] private CheckCollision pressurePlate2;//Reference to CheckCollision script of pressure plate 2
+    [SerializeField] private OpenGate gateController;//Reference to OpenGate script
 
-    public bool GateActivated = false;
-    private bool hasPlayedSound = false;
+    private bool hasPlayedSound = false;//Bool to check if the SFX has been played
 
     AudioManager audioManager;
 
@@ -17,20 +17,22 @@ public class ORGateManager : MonoBehaviour
 
     void Update()
     {
-        //Perform OR logic: At least one pressure plate must be pressed
-        if (pressurePlate1.isColliding || pressurePlate2.isColliding)
+        //Perform OR logic check
+        //If either pressure plate is pressed, activate the gate
+        bool isGateActivated = pressurePlate1.isColliding || pressurePlate2.isColliding;
+
+        //Pass the status to OpenGate script
+        gateController.GateActivated = isGateActivated;
+
+        if (isGateActivated && !hasPlayedSound)
         {
-            GateActivated = true;
-            if (!hasPlayedSound)
-            {
-                PlayOpenGateSFX();
-                hasPlayedSound = true;
-            }
-            Debug.Log("OR Gate Open: At least one pressure plate is pressed.");
+            PlayOpenGateSFX();
+            hasPlayedSound = true;
         }
-        else
+        else if (!isGateActivated && hasPlayedSound)
         {
-            GateActivated = false;
+            //Reset SFX bool when the gate is closed
+            hasPlayedSound = false;
         }
     }
 

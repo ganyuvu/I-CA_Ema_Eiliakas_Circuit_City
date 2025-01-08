@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class OpenANDGate : MonoBehaviour
+public class OpenGate : MonoBehaviour
 {
-    [SerializeField] private ANDGateManager gateManager;//Reference to the ANDGateManager
+    [SerializeField] public bool GateActivated;//Bool to check if the gate has been activated
     [SerializeField] private Transform gate;//The gate GameObject to move
     [SerializeField] private float targetYPosition = 5f;//Desired Y position for the gate
     [SerializeField] private float speed = 2f;//Speed of gate movement
@@ -17,11 +17,11 @@ public class OpenANDGate : MonoBehaviour
 
     void Update()
     {
-        //Check if the gate should rise
-        if (gateManager.GateActivated)
+        //Check if the gate should rise based on the GateActivated status
+        if (GateActivated)
         {
-            //Smoothly move the gate to the target Y position
             Vector3 targetPosition = new Vector3(initialPosition.x, targetYPosition, initialPosition.z);
+            //Smoothly move the gate to the target position
             gate.position = Vector3.Lerp(gate.position, targetPosition, Time.deltaTime * speed);
         }
         else
