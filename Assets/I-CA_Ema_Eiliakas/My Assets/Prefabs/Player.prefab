@@ -86,7 +86,7 @@ MonoBehaviour:
   clickEffect: {fileID: 428852817160778579, guid: 4e1244893b82d5643b398d2290dde618, type: 3}
   clickableLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
 --- !u!195 &5147232981629573819
 NavMeshAgent:
   m_ObjectHideFlags: 0
