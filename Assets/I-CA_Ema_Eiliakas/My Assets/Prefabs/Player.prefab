@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 4936701150408039485}
   - component: {fileID: 7070827860947332798}
   - component: {fileID: 8821880333094401860}
+  - component: {fileID: 3904298583122886842}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -210,6 +211,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayCastDetection: {fileID: 7070827860947332798}
   holdPosition: {fileID: 158027901917930988}
+--- !u!114 &3904298583122886842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329279538996932091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21192b2360d16a34ba060a34c3bd6a24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 0}
 --- !u!1001 &5356648739561171415
 PrefabInstance:
   m_ObjectHideFlags: 0
