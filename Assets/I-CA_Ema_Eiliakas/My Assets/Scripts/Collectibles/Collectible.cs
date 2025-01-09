@@ -1,39 +1,26 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Collectible : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI collectibleCounterText;
-
-    //Counter shared among all collectibles
-    private static int collectibleCount = 0;
+    [SerializeField] private string category = "PlaceHolder Category";//Category for the item
+    [SerializeField] private string itemName = "PlaceHolder Name";//Name of the collectible
+    [SerializeField] private InventoryManager inventoryManager;//Reference to the InventoryManager
 
     private void OnTriggerEnter(Collider other)
     {
-        //Check if the player collided with the collectible
         if (other.CompareTag("Player"))
         {
-            Collect();
-        }
-    }
+            if (inventoryManager == null)
+            {
+                Debug.LogError("InventoryManager not assigned in the inspector!");
+                return;
+            }
 
-    private void Collect()
-    {
-        //Increment the counter
-        collectibleCount++;
+            //Add collectible to the inventory
+            inventoryManager.AddCollectible(category, itemName, 1);
 
-        //Update the UI
-        if (collectibleCounterText != null)
-        {
-            collectibleCounterText.text = $"Collectibles: {collectibleCount}";
+            //Destroy the collectible
+            Destroy(gameObject);
         }
-        else
-        {
-            Debug.LogWarning("Collectible counter text is not assigned.");
-        }
-
-        //Destroy the collectible object
-        Destroy(gameObject);
     }
 }
