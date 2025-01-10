@@ -6,7 +6,8 @@ public class StateManager : MonoBehaviour
     private enum PlayerState
     {
         Normal,
-        Inventory
+        Inventory,
+        Inspecting
     }
 
     //Current state of the player
@@ -14,6 +15,7 @@ public class StateManager : MonoBehaviour
 
     [SerializeField] private ToggleInventory toggleInventory;//Reference to the ToggleInventory script
     [SerializeField] private PlayerController playerController;//Reference to the PlayerController script
+    [SerializeField] private CameraToggle cameraToggle;//Reference to the CameraToggle script
 
     void Start()
     {
@@ -38,6 +40,14 @@ public class StateManager : MonoBehaviour
                 SwitchToInventoryState();
             }
         }
+        else if (cameraToggle.IsCameraToggled())
+        {
+            if (currentState != PlayerState.Inspecting)
+            {
+                //Transition to Inspecting State
+                SwitchToInspectingState(true);
+            }
+        }
         else
         {
             if (currentState != PlayerState.Normal)
@@ -55,6 +65,23 @@ public class StateManager : MonoBehaviour
         Debug.Log("Switched to Inventory State");
         playerController.enabled = false;
     }
+
+    //Switch to the inspecting State
+    public void SwitchToInspectingState(bool isInspecting)
+    {
+        if (isInspecting)
+        {
+            currentState = PlayerState.Inspecting;
+            Debug.Log("Switched to Inspecting State");
+            //Disable player movement
+            playerController.enabled = false;
+        }
+        else
+        {
+            SwitchToNormalState(); // Switch back to normal state
+        }
+    }
+
 
     //Switch to the normal state
     private void SwitchToNormalState()
