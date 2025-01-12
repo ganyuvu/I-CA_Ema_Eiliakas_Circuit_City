@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class InventoryUIDisplay : MonoBehaviour
 {
     [SerializeField] private InventoryManager inventoryManager;//Reference to InventoryManager
     [SerializeField] private Transform inventoryContent;//The content area where items will be displayed
-    [SerializeField] private TextMeshProUGUI itemTextPrefab;//Text Prefab for displaying each item as text
+    [SerializeField] private GameObject itemPrefab;//Prefab for displaying inventory items
+    [SerializeField] private Sprite defaultIcon;//Default icon if no specific image is available
 
     //Update the UI to display current items in inventory
     public void UpdateInventoryUI()
@@ -16,22 +18,51 @@ public class InventoryUIDisplay : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        //Access the InventoryCollection directly from InventoryManager
+        //Ensure prefab is assigned
+        if (itemPrefab == null)
+        {
+            Debug.LogError("Item prefab is not assigned in the Inspector!");
+            return;
+        }
+
+        //Get inventories
         var inventories = inventoryManager.GetInventoryCollection().GetAllInventories();
 
-        //Loop through all categories in the inventory collection
         foreach (var category in inventories)
         {
-            //Loop through each item in the inventory category
             foreach (var item in category.Value.GetAllItems())
             {
-                //Create a new text item for the inventory UI
-                TextMeshProUGUI itemText = Instantiate(itemTextPrefab, inventoryContent);
-                
-                //Set the text to display the item name and count
-                //item.Key is the item name, item.Value is the item count
-                itemText.text = item.Key + " x" + item.Value.ToString();
+                //Instantiate the prefab
+                GameObject itemDisplay = Instantiate(itemPrefab, inventoryContent);
+
+                //Set the item's name and quantity
+                var itemNameTransform = itemDisplay.transform.Find("ItemName");
+                if (itemNameTransform != null)
+                {
+                    TextMeshProUGUI itemText = itemNameTransform.GetComponent<TextMeshProUGUI>();
+                    if (itemText != null)
+                    {
+                        itemText.text = item.Key + " x" + item.Value.ToString();
+                    }
+                }
+
+                //Set the item's icon
+                var iconTransform = itemDisplay.transform.Find("Icon");
+                if (iconTransform != null)
+                {
+                    Image iconImage = iconTransform.GetComponent<Image>();
+                    if (iconImage != null)
+                    {
+                        //Assign a default icon or a specific one if available
+                        iconImage.sprite = GetItemIcon(item.Key) ?? defaultIcon;
+                    }
+                }
             }
         }
+    }
+    private Sprite GetItemIcon(string itemName)
+    {
+        //Return null to use the default icon
+        return null;
     }
 }
