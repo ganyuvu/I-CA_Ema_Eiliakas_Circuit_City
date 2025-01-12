@@ -34,6 +34,16 @@ public class ToggleInventory : MonoBehaviour
         //Toggle the inventory open/closed
         isInventoryOpen = !isInventoryOpen;
         inventoryPanel.SetActive(isInventoryOpen);
+
+        if(isInventoryOpen == true)
+        {
+            Time.timeScale = 0;
+            Debug.Log("Game paused");
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     //This method allows the StateManager to check if the inventory is open
