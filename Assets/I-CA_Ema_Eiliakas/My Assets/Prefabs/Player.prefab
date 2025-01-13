@@ -48,7 +48,8 @@ GameObject:
   - component: {fileID: 7070827860947332798}
   - component: {fileID: 8821880333094401860}
   - component: {fileID: 3904298583122886842}
-  - component: {fileID: 4020285540746392048}
+  - component: {fileID: 8572661028931866387}
+  - component: {fileID: 1111798495010089430}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -225,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryPanel: {fileID: 0}
---- !u!114 &4020285540746392048
+--- !u!114 &8572661028931866387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -234,12 +235,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2329279538996932091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 425be0ff8d7096a4083307b011215558, type: 3}
+  m_Script: {fileID: 11500000, guid: b70ce7272082bd441bbd97ad29a4890b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   primaryCamera: {fileID: 0}
-  secondaryCamera: {fileID: 0}
+--- !u!114 &1111798495010089430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329279538996932091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5dde850c284a94890ec2dd5cacc0bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   rayCastDetection: {fileID: 7070827860947332798}
+  toggleCamera: {fileID: 8572661028931866387}
 --- !u!1001 &5356648739561171415
 PrefabInstance:
   m_ObjectHideFlags: 0
