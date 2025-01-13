@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   category: Collectibles
-  itemName: Key
+  itemName: AND Key
   inventoryManager: {fileID: 0}
