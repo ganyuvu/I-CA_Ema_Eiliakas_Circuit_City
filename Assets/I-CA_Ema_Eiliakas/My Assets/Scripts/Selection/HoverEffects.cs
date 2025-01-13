@@ -11,6 +11,7 @@ namespace GD.Selection
         [SerializeField] private Color andPlateColor = Color.red; // Color for ANDPlate layer
         [SerializeField] private Color orPlateColor = Color.green; // Color for ORPlate layer
         [SerializeField] private Color nandPlateColor = Color.blue; // Color for NANDPlate layer
+        [SerializeField] private Color SecurityCameras = Color.red; // Color for NANDPlate layer
 
         [SerializeField] private MouseRay mouseRay; // Reference to the MouseRay script
 
@@ -75,6 +76,10 @@ private void HandleObjectHover(Transform obj)
                 objectRenderer.material.color = orPlateColor;
             }
             else if (obj.gameObject.layer == LayerMask.NameToLayer("NANDPlate"))
+            {
+                objectRenderer.material.color = nandPlateColor;
+            }
+            else if (obj.gameObject.layer == LayerMask.NameToLayer("Inspecting"))
             {
                 objectRenderer.material.color = nandPlateColor;
             }
