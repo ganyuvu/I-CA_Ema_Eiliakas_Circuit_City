@@ -97,6 +97,7 @@ F key https://www.flaticon.com/free-icon/letter-f_12222108?term=keyboard+button&
 TAB key https://www.flaticon.com/free-icon/tab_9096960?term=keyboard+button&page=1&position=76&origin=tag&related_id=9096960 
 
 E key https://www.flaticon.com/free-icon/letter-e_12222092?term=keyboard+button&page=1&position=30&origin=tag&related_id=12222092 
+
 Left click https://www.flaticon.com/free-icon/left-click_3645819?term=mouse+left+click&page=1&position=8&origin=search&related_id=3645819 
 
 SOUND ASSETS:
