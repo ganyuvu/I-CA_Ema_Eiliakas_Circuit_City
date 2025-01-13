@@ -102,8 +102,11 @@ Left click https://www.flaticon.com/free-icon/left-click_3645819?term=mouse+left
 
 SOUND ASSETS:
 Pressure plate: https://pixabay.com/sound-effects/light-switch-156813/
+
 key pickup: https://www.youtube.com/watch?v=4uUk0JmXndY
+
 pick-up/drop: https://freesound.org/people/ittou/sounds/465451/ (I edited the drop and pick up from this sound)
+
 open and close gate sound made from here: https://freesound.org/people/InspectorJ/sounds/271570/
 
 
