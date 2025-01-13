@@ -18,6 +18,10 @@ Puzzles are scoped down as I ran out of time
 
 References:
 
+Video that helped with code:
+https://www.youtube.com/watch?v=LVu3_IVCzys
+https://www.youtube.com/watch?v=N8whM1GjH4w&t=419s
+
 3D MODELS:
 
 Cone: https://poly.pizza/m/lAx8JytxGD 
