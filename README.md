@@ -110,5 +110,5 @@ pick-up/drop: https://freesound.org/people/ittou/sounds/465451/ (I edited the dr
 open and close gate sound made from here: https://freesound.org/people/InspectorJ/sounds/271570/
 
 
-
+VIDEO LINK: https://www.youtube.com/watch?v=B4BQi1KFphA
  
